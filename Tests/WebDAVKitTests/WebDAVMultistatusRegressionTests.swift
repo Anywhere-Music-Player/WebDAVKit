@@ -2,6 +2,10 @@ import Foundation
 import Testing
 @testable import WebDAVKit
 
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+
 @Suite
 struct WebDAVMultistatusRegressionTests {
     @Test(arguments: [false, true])
