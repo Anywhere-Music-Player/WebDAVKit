@@ -1,4 +1,4 @@
-![Tests](https://img.shields.io/github/actions/workflow/status/DennisDreissen/WebDAVKit/tests.yml?color=brightgreen&label=Tests&logo=github)
+![Tests](https://img.shields.io/github/actions/workflow/status/Anywhere-Music-Player/WebDAVKit/tests.yml?color=brightgreen&label=Tests&logo=github)
 ![SPM](https://img.shields.io/badge/Swift_Package_Manager-compatible-brightgreen)
 ![Swift](https://img.shields.io/badge/Swift-6.0_6.1_6.2_6.3-brightgreen)
 
@@ -6,7 +6,18 @@
 
 This is a lightweight WebDAV client for interacting with WebDAV servers.
 
-> This library was created to support a WebDAV feature in an app I worked on. Currently there's no tagged release since I'm still making changes or adding new operations as needed. If you would like to use this library in one of your projects, please create an issue and I will create an initial `1.0.0` release. The API is mostly stable at this point. There is also an [S3](https://github.com/DennisDreissen/S3Kit) equivalent with a similar API.
+This is the [Anywhere Music Player](https://github.com/Anywhere-Music-Player) fork of [DennisDreissen/WebDAVKit](https://github.com/DennisDreissen/WebDAVKit), distributed under the original MIT license. Fork releases use calendar versions (`YYYY.M.P`).
+
+### 2026.10.0
+
+The first tagged fork release contains the existing multistatus parser fix from `ddcd14141358c6ef01c2d5bb6e4bb72256b3d774`, based on upstream `69faeb370a5fbdbc6e7d98c6abc63bd75f407dfa`:
+
+- Merge properties from all successful `propstat` blocks so property order does not change file or directory classification.
+- Parse numeric HTTP status codes and handle response-level errors and missing property blocks explicitly.
+- Reject resources without a successful `resourcetype` property instead of guessing that they are files.
+- Include regression tests for property ordering, XML namespaces, failed property blocks, and malformed responses.
+
+This release changes distribution and documentation; the library source is unchanged from the fix commit. The upstream report is [issue #1](https://github.com/DennisDreissen/WebDAVKit/issues/1).
 
  ```swift
 let client = WebDAVClient(
@@ -28,7 +39,7 @@ Every method that interacts with WebDAV returns a `WebDAVResponse`. This respons
 
  ```swift
 dependencies: [
-    .package(url: "https://github.com/DennisDreissen/WebDAVKit.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/Anywhere-Music-Player/WebDAVKit.git", exact: "2026.10.0")
 ]
  ```
 
